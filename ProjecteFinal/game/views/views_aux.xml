@@ -1,0 +1,38 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="game.recursos_kanban">
+            <field name="name">Recursos kanban</field>
+            <field name="model">game.recursos</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="name"/>
+                    <field name="id"/>
+                    <field name="cantidad"/>
+
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_card" >
+                                <ul style="list-style:none;">
+                                    <li>Nombre :
+                                        <field name="name"/>
+                                    </li>
+                                    <li>Cantidad :
+                                        <field name="cantidad"/>
+                                    </li>
+
+                                    <li>
+                                        <field name="recurs"/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

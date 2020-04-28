@@ -1,0 +1,29 @@
+body{
+    background: url("../images/imagesLogin/indice.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#bloqueCiudad{
+    position: relative;
+    width:500px;
+    height: 500px;
+    margin-left: 30%;
+    margin-top: 10%;
+    background-color: red;
+}
+
+#navOpciones{
+    background-color: blue;
+    width: 140px;
+    position: fixed;
+    border-radius: 0;
+    height: 500px;
+}
+
+#fondoCiudad{
+    width: 500px;
+    height:500px;
+    margin-left: 140px;
+    position: fixed;
+}

@@ -1,0 +1,38 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    background: url("../images/imagesLogin/indice.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  
+}
+
+#login{
+    background-image: linear-gradient(white, #4d79ff);
+    border: 2px solid black;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50%;
+
+
+}
+
+.inputLogin{
+    width: 200px;
+    margin-top: 10px;
+}
+.buttonLogin{
+    margin-top: 8px;
+}
+
+.error{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: blanchedalmond;
+}

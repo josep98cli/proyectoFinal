@@ -1,0 +1,30 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    background: url("../images/imagesLogin/indice.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#registro{
+    background-image: linear-gradient(white, #4d79ff);
+    width: 400px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50%;
+}
+.inputLogin{
+    margin-top: 16px;
+}
+.buttonLogin{
+    margin-top: 20px;
+}
+
+.error{
+    color:red;
+    font-size: 12px;
+}

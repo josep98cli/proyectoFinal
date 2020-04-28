@@ -1,0 +1,130 @@
+<odoo>
+    <data>
+
+           <record model="ir.ui.view" id="game.res_partner_search">
+            <field name="name">Jugador search</field>
+            <field name="model">res.partner</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <filter name="ciutat" string="Ciudades" domain="[('ciutat', '>', 0)]"/>
+                </search>
+            </field>
+        </record>
+
+
+
+        <record model="ir.ui.view" id="game.ciutat_search">
+            <field name="name">Ciutat search</field>
+            <field name="model">game.ciutat</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="jugador"/>
+                    <filter name="vida" string="Vida" domain="[('vida', '>', 0)]"/>
+                     <filter name="vivas" string="Vivas" domain="[('jugador', '!=', False)]"/>
+                </search>
+            </field>
+        </record>
+
+
+         <record model="ir.ui.view" id="game.recurs_search">
+            <field name="name">Recurs search</field>
+            <field name="model">game.recurs</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+
+           <record model="ir.ui.view" id="game.recursos_search">
+            <field name="name">Recursos search</field>
+            <field name="model">game.recursos</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="ciutat"/>
+                    <filter name="cantidad" string="Cantidad" domain="[('cantidad','>', 0)]"/>
+                </search>
+            </field>
+        </record>
+
+
+               <record model="ir.ui.view" id="game.mines_search">
+            <field name="name">Mines search</field>
+            <field name="model">game.mines</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="mina"/>
+                    <filter name="status" string="Estado" domain="[('status', '=', 'Mejorada')]"/>
+                    <filter name="nivel" string="Activa" domain="[('nivel', '>', 0)]"/>
+                    <field name="coste"/>
+                </search>
+            </field>
+        </record>
+
+
+          <record model="ir.ui.view" id="game.mina_search">
+            <field name="name">Mina search</field>
+            <field name="model">game.mina</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="recurs"/>
+                </search>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="game.soldado_search">
+            <field name="name">Soldado search</field>
+            <field name="model">game.soldado</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="ataque"/>
+                    <filter name="vida" string="Tropas disponibles" domain="[('vida', '>', 0)]"/>
+                    <field name="velocidad"/>
+                    <field name="recurs"/>
+                    <filter name="cantidad" string="Cantidad de tropas" domain="[('cantidad', '>', 0)]"/>
+                </search>
+            </field>
+        </record>
+
+
+
+        <record model="ir.ui.view" id="game.naves_search">
+            <field name="name">Naves search</field>
+            <field name="model">game.naves</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="ataque"/>
+                    <filter name="vida" string="Tropas disponibles" domain="[('vida', '>', 0)]"/>
+                    <field name="velocidad"/>
+                    <field name="cap_transporte"/>
+                    <filter name="cant_tropas" string="Cantidad de tropas" domain="[('cant_tropas', '>', 0)]"/>
+                </search>
+            </field>
+        </record>
+
+
+
+        <record model="ir.ui.view" id="game.wars_search">
+            <field name="name">Wars search</field>
+            <field name="model">game.wars</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="atacante"/>
+                   <field name="defensor"/>
+                    <field name="jugador"/>
+                    <filter name="empezar" string="Activas" domain="[('empezar', '=', True)]"/>
+                    <field name="minutos"/>
+                    <filter name="acabada" string="Acabada" domain="[('acabada', '=', False)]"/>
+                </search>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+acces_game_crea_jugador, game.crea_jugador,model_game_crea_jugador,,1,1,1,1
+access_res_partner,res.partner,model_res_partner,,1,1,1,1
+access_game_ciutat,game.ciutat,model_game_ciutat,,1,1,1,1
+access_game_recurs,game.recurs,model_game_recurs,,1,1,1,1
+access_game_recursos,game.recursos,model_game_recursos,,1,1,1,1
+access_game_mines,game.mines,model_game_mines,,1,1,1,1
+access_game_mina,game.mina,model_game_mina,,1,1,1,1
+acces_game_soldado,game.soldado,model_game_soldado,,1,1,1,1
+acces_game_naves,game.naves,model_game_naves,,1,1,1,1
+acces_game_wars,game.wars,model_game_wars,,1,1,1,1
+acces_game_historic, game.historic,model_game_historic,,1,1,1,1
+acces_game_wizard, game.wizard,model_game_wizard,,1,1,1,1
