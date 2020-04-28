@@ -54,10 +54,11 @@ body{
 }
 
 #divMina{
-    margin-top: 10px;
+    margin-top: 8px;
     background-color: black;
     color: white;
-    
+    display:flex;
+    font-size: 12.8px;
 }
 
 #soldado{
@@ -70,6 +71,11 @@ body{
 
 #soldado .buySoldados{
     margin-left: 100px;
+    margin-top: 20px;
+    
+}
+#divMina .upgradeMina{
+    margin-left: 120px;
     margin-top: 20px;
     
 }

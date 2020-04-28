@@ -1,5 +1,3 @@
-<!-- FUNCION EN JS QUE ES LLAMADA DES DE EL BOTON UPGRADE QUE SIRVE PARA MEJORAR LA MINA  -->
-
 
 <?php
 
@@ -17,7 +15,7 @@
                     echo '<br>';
                     echo "Produccion: ".$infCiudad2['produccion'];
 
-                    echo "<a href='./ciudad.php?idCiudad=".$ciudad."&numImg=".$numImg."&seleccion=minas&upgrade=".True."&infoUpgrade=".$infCiudad2['id']."'>Upgrade</a>";
+                    echo "<a class='upgradeMina' href='./ciudad.php?idCiudad=".$ciudad."&numImg=".$numImg."&seleccion=minas&upgrade=".True."&infoUpgrade=".$infCiudad2['id']."'>Upgrade</a>";
                 echo "</div>";
                 echo "<hr/>";
         }

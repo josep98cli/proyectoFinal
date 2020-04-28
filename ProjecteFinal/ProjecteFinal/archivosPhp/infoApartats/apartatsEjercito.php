@@ -19,7 +19,7 @@
                         echo "<br/>";
                     echo "Coste compra: ".$soldado['cantidad'];
                         echo "<br/>";
-                    echo "<a class='buySoldados' href='./ciudad.php?idCiudad=".$ciudad."&numImg=".$numImg."&seleccion=ejercito&comprarSoldado=".True."&soldado=".$soldado['id']."'>Comprar</a>";
+                    echo "<a class='buySoldados' href='./ciudad.php?idCiudad=".$ciudad."&numImg=".$numImg."&seleccion=$seleccion&comprarSoldado=".True."&soldado=".$soldado['id']."'>Comprar</a>";
                 
                 echo '</div>';
                 echo "<hr/>";

@@ -30,7 +30,7 @@ isset($_GET['soldado'])? $idSoldado=$_GET['soldado'] : $idSoldado="empty";
                     <a class ="classNav" href="./ciudad.php?idCiudad=<?php echo $ciudad?>&numImg=<?php echo $numImg?>&seleccion=recursos">Recursos</a>
                 </div>
                 <div id="apartatNav3" class="parte1">
-                    <a class ="classNav" href="./ciudad.php?idCiudad=<?php echo $ciudad?>&numImg=<?php echo $numImg?>&seleccion=ejercito">Ejercito</a>
+                    <a class ="classNav" href="./ciudad.php?idCiudad=<?php echo $ciudad?>&numImg=<?php echo $numImg?>&seleccion=soldados">Soldados</a>
                 </div>
                 <div id="apartatNav3" class="parte1">
                     <a class ="classNav" href="./ciudad.php?idCiudad=<?php echo $ciudad?>&numImg=<?php echo $numImg?>&seleccion=wars">Guerras</a>
@@ -70,7 +70,7 @@ isset($_GET['soldado'])? $idSoldado=$_GET['soldado'] : $idSoldado="empty";
                                     include './infoApartats/apartatsRecursos.php';
                             break;
                             
-                            case 'ejercito':
+                            case 'soldados':
                                     include './infoApartats/apartatsEjercito.php';
                                  if($comprarSoldado==1){
                                     
