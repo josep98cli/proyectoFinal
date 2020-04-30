@@ -6,6 +6,9 @@ isset($_GET['upgrade'])? $upgradear=$_GET['upgrade'] : $upgradear=false;
 isset($_GET['infoUpgrade'])? $infoUpgrade=$_GET['infoUpgrade'] : $infoUpgrade="";
 isset($_GET['comprarSoldado'])? $comprarSoldado=$_GET['comprarSoldado'] : $comprarSoldado=false;
 isset($_GET['soldado'])? $idSoldado=$_GET['soldado'] : $idSoldado="empty";
+isset($_GET['comprarNaves'])? $comprarNave=$_GET['comprarNaves'] : $comprarNave=false;
+isset($_GET['naves'])? $idNave=$_GET['naves'] : $idNave="empty";
+
 ?>
 
 <html>
@@ -32,7 +35,10 @@ isset($_GET['soldado'])? $idSoldado=$_GET['soldado'] : $idSoldado="empty";
                 <div id="apartatNav3" class="parte1">
                     <a class ="classNav" href="./ciudad.php?idCiudad=<?php echo $ciudad?>&numImg=<?php echo $numImg?>&seleccion=soldados">Soldados</a>
                 </div>
-                <div id="apartatNav3" class="parte1">
+                <div id="apartatNav4" class="parte1">
+                    <a class ="classNav" href="./ciudad.php?idCiudad=<?php echo $ciudad?>&numImg=<?php echo $numImg?>&seleccion=naves">Naves</a>
+                </div>
+                <div id="apartatNav5" class="parte1">
                     <a class ="classNav" href="./ciudad.php?idCiudad=<?php echo $ciudad?>&numImg=<?php echo $numImg?>&seleccion=wars">Guerras</a>
                 </div>
             </div>
@@ -71,7 +77,7 @@ isset($_GET['soldado'])? $idSoldado=$_GET['soldado'] : $idSoldado="empty";
                             break;
                             
                             case 'soldados':
-                                    include './infoApartats/apartatsEjercito.php';
+                                    include './infoApartats/apartatsSoldado.php';
                                  if($comprarSoldado==1){
                                     
                                     $soldadoComprado = $models->execute_kw($db, $uid, $password,
@@ -83,6 +89,20 @@ isset($_GET['soldado'])? $idSoldado=$_GET['soldado'] : $idSoldado="empty";
                                  }   
                                     
 
+                            break;
+
+                            case 'naves':
+                                
+                                    include './infoApartats/apartatsNaves.php';  
+                                    
+                                    if($comprarNave==1){
+                                        $naveComprada = $models->execute_kw($db, $uid, $password,
+                                        'game.naves', 'comprar_naves',
+                                        array(array($idNave)));
+                                        
+                                        header("Location: ./ciudad.php?idCiudad=$ciudad&numImg=$numImg&seleccion=$seleccion");
+                                        die();
+                                     }   
                             break;
                             
                             case 'wars':

@@ -1054,7 +1054,7 @@ Yk+T9GKMIdgT1j/KAYWunDiv/9k=
         </record>
 
           <record id="game.rayo_laser" model="game.mina">
-            <field name="name">Mina mediante rayo laser</field>
+            <field name="name">Mina rayo laser</field>
             <field name="recurs" eval="ref('game.itrio')"/>
               <field name="image">
                   /9j/4AAQSkZJRgABAQEBLAEsAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsK

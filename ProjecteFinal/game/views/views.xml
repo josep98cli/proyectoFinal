@@ -74,6 +74,7 @@
                                 <field name="vida" class="oe_read_only"/>
                                 <br/>
                                 <field name="jugador" class="oe_read_only"/>
+                                <field name="points"/>
                             </div>
 
                             <img src="game/static/ciutat_img.jpg" alt="ciutat"/>
@@ -119,7 +120,8 @@
                     <field name="mines" string="Minas" widget="many2many_tags"/>
                     <field name="soldado" string="Soldados" widget="many2many_tags"/>
                     <field name="naves" string="Naves" widget="many2many_tags"/>
-                    <field name="ocultar_bool" invisible="1"/>
+                    <field name="ocultar_bool" invisible="0"/>
+                    <field name="points"/>
                     <button name="%(launch_game_ciutat_wizard)d" type="action" string="Launch attack" class="oe_highlight" attrs="{'invisible':[('ocultar_bool', '=', False)]}"/>
                 </tree>
             </field>

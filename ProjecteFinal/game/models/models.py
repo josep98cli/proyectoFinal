@@ -7,7 +7,7 @@ import random
 
 class jugador(models.Model):
     _inherit = 'res.partner'
-    fecha_creacion = fields.Date(default=lambda self: datetime.date.today())
+    fecha_creacion = fields.Date(default=lambda self: fields.Date.today())
     fecha_muerte = fields.Date(default=lambda self: datetime.date.today() + datetime.timedelta(days=10))
     image = fields.Binary()
     name = fields.Char(string='Nombre jugador',
@@ -16,6 +16,8 @@ class jugador(models.Model):
     is_player = fields.Boolean(default=False)
     default_is_player = fields.Boolean(default=False)
     password = fields.Char()
+    
+
     @api.constrains('ciutat')
     def _check_ciutat(self):
         print("PEPE")
@@ -86,8 +88,8 @@ class jugador(models.Model):
                             m.mejora = False
                             m.write({'status': 'Mejorada'})
                         elif m.mejora:
-                            m.write({'status': 'Mejorando...'})
-                            m.write({'minutos': m.minutos - 1})
+                            m.write({'status': 'Mejorando...', 'minutos': m.minutos - 1})
+                            
             if c.vida == 0:
                 c.jugador = False
 
@@ -123,6 +125,35 @@ class ciutat(models.Model):
     wars_ganadas = fields.Integer(default=0)
     historic = fields.One2many('game.historic', 'ciutat')
     ocultar_bool = fields.Boolean(default=False)
+    last_update = fields.Datetime()
+    hour_now = fields.Datetime(compute = lambda self: fields.Datetime.now())
+    points = fields.Float(default=0)
+
+    @api.multi
+    def busqueda_points(self,values):
+        listaMostrar = []
+
+        listaJugadores = self.env['res.partner'].search([('is_player', '!=', False)])
+        ciudad_principal = self.env['game.ciutat'].search([('id', '=', values)])
+        
+        for j in listaJugadores:
+            incluir = True
+            for c in j.ciutat:
+                if c.id == values:
+                    incluir = False
+                    #algoritmo para calcular las ciudades que ha de mostrar a cada jugador
+                elif c.points > ((ciudad_principal.points * 2)% 1.3) or c.points <((ciudad_principal.points % 2)* 1.3) and ciudad_principal.points>0:
+                    incluir = False
+                    
+                else:
+                    incluir = True
+                    
+            if incluir == True:
+                listaMostrar.append(c.id)
+
+        return listaMostrar
+            
+        
 
     @api.multi
     def refresh_pag(self):
@@ -194,6 +225,7 @@ class recursos(models.Model):
     ciutat = fields.Many2one('game.ciutat')
     recurs = fields.Many2one('game.recurs')
     cantidad = fields.Float()
+    
 
     # calculo del coste para upgradear una mina
     @api.multi
@@ -216,7 +248,7 @@ class recursos(models.Model):
                                 m.tiempo_total = (2 * (nivel + 1))
                                 m.coste = coste
                                 r.cantidad -= coste
-
+                                
                 else:
                     raise except_orm('ERROR',
                                      'Faltan recursos para hacer la mejora')
@@ -303,6 +335,7 @@ class soldado(models.Model):
                                 if rs.cantidad >= ls.cantidad:
                                     rs.cantidad -= ls.cantidad
                                     ls.cant_tropas += 1
+                                    c.points+= 1
                                 else:
                                     raise except_orm('ERROR',
                                             'No tienes suficientes recursos para comprar al soldado')
@@ -323,15 +356,23 @@ class naves(models.Model):
 
     @api.multi
     def comprar_naves(self):
-        for c in self.ciutat:
-            for rs in c.recursos:
-                for r in rs.recurs:
-                    if r.id == self.recurs.id:
-                        if rs.cantidad >= self.cantidad:
-                            rs.cantidad -= self.cantidad
-                            self.cant_tropas += 1
-                        else:
-                            raise except_orm('ERROR',
+        if self.id=="":
+            return False
+        llista_naves = self.env['game.naves'].search([])
+        
+        id_naves = int(self.id)
+        for ls in llista_naves:
+            if ls.id == id_naves:
+                for c in ls.ciutat:
+                    for rs in c.recursos:
+                        for r in rs.recurs:
+                            if r.id == ls.recurs.id:
+                                if rs.cantidad >= ls.cantidad:
+                                    rs.cantidad -= ls.cantidad
+                                    ls.cant_tropas += 1
+                                    c.points+= 1
+                                else:
+                                    raise except_orm('ERROR',
                                              'No tienes suficientes recursos para comprar la nave')
 
 
@@ -410,6 +451,8 @@ class wars(models.Model):
         else:
             self.empezar = True
 
+    
+
     @api.model
     def start_war(self):
 
@@ -481,6 +524,7 @@ class wars(models.Model):
 
                             for a in st.atacante:
                                 a.wars_ganadas += 1
+                                a.points += 7
                                 for r in a.recursos:
                                     r.cantidad += percent_def * 10
                         else:
@@ -491,6 +535,7 @@ class wars(models.Model):
                                     n.cant_tropas = 0
                             for d in st.defensor:
                                 d.wars_ganadas += 1
+                                d.points += 11
 
                         st.minutos -= 1
 

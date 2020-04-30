@@ -5,7 +5,8 @@
                             'game.recursos', 'read',
                             array($inf2['recursos']),
                             array('fields'=>array('name', 'cantidad', 'recurs')));
-           
+           //demanar last_update
+           //demanar hora exacta.
             echo '<table>';
             foreach($infoCiutat as $recursos){
                 echo '<tr>';
